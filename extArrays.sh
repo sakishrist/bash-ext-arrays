@@ -14,6 +14,14 @@ __ARRAY_COUNT__=0
 # Private Functions #
 #####################
 
+escape () {
+	local content
+	
+	content="$1"
+	content="${content/\'/\'\\\'\'}"
+	echo "$content"
+}
+
 __ARRAY_HANDLER__ () {
 	local var=$1; shift
 	local expr="$@"
@@ -28,7 +36,7 @@ __ARRAY_HANDLER__ () {
 		
 	# Next element is an assignment - like '= blah' - this breaks the recursion
 	elif [[ $expr =~ ^\ *=\ *(.*) ]]; then
-		eval "$var=${BASH_REMATCH[1]}"
+		eval "$var='$(escape "${BASH_REMATCH[1]}")'"
 		
 	# No next element, so we switch to printing the variable instead - this breaks the recursion
 	elif [[ $expr =~ ^\ *$ ]]; then
