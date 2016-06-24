@@ -17,8 +17,7 @@ __ARRAY_COUNT__=0
 __ARRAY_HANDLER__ () {
 	local var=$1; shift
 	local expr="$@"
-	local index
-	local newExpr
+	local index newExpr content
 	
 	# Next element is an index - like '[0]' - continue with recursion
 	if [[ $expr =~ ^\ *\[([0-9]*)\](.*) ]]; then
