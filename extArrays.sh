@@ -49,7 +49,7 @@ __ARRAY_HANDLER__ () {
 }
 
 __ARRAY_GENERATE__ () {
-	if [[ -z $(eval "echo \${$var}") ]]; then
+	if [[ -z $(eval "echo \${$1}") ]]; then
 		eval "$1=__ARRAY__$__ARRAY_COUNT__"
 		((__ARRAY_COUNT__++))
 	fi
