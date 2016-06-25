@@ -74,11 +74,10 @@ __ARRAY_TESTER__ () {
 # Perl Data::Dumper style dumping of the contents of the whole array
 arrayDumper () {
 	local pointer=$1
-	
 	local content="$(eval "echo \${$pointer}")"
+	local indent="$2"
 	local key
 	
-	local indent="$2"
 	if [[ -z $indent ]]; then
 		echo -n "$pointer = "
 	fi
