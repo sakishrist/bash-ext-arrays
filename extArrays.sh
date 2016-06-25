@@ -95,6 +95,26 @@ arrayDumper () {
 	fi
 }
 
+arrayExport () {
+	local pointer=$1
+	local content="$(eval "echo \${$pointer}")"
+	local indent="$2"
+	local key
+	
+	if [[ -z $indent ]]; then
+		echo "array $pointer"
+		indent="$pointer "
+	fi
+	
+	if [[ $(declare -p $content 2> /dev/null) =~ ^declare\ -a ]]; then
+		for key in $(eval "echo \${!$content[@]}"); do
+			arrayExport $content[$key] "${indent}[$key]"
+		done
+	else
+		echo "$indent$key='$(escape "$content")'"
+	fi
+}
+
 # Associate the new name with the array handler function
 array () {
 	alias $1="__ARRAY_HANDLER__ $1"
