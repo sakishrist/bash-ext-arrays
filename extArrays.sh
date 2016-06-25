@@ -61,10 +61,10 @@ __ARRAY_TESTER__ () {
 	multid [65535][0] = 20
 	multid [65535][1] = 30
 	
-	dumper multid
+	arrayDumper multid
 	
-	dumper asd
 	asd=zxc
+	arrayDumper asd
 }
 
 ####################
@@ -87,7 +87,7 @@ arrayDumper () {
 		echo "{"
 		for key in $(eval "echo \${!$content[@]}"); do
 			echo -n "    $indent$key = "
-			dumper $content[$key] "    "
+			arrayDumper $content[$key] "    "
 		done
 		echo "$indent}"
 	else
