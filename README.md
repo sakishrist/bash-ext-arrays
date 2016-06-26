@@ -2,7 +2,7 @@
 Bash arrays that support multiple dimensions
 
 ## Usage
-To use this script, source it from one of your scripts (or even from the shell). Once sourced, you can use the arrays like this:
+To use multi-dimensional arrays, source this file from one of your bash scripts (or even from your interactive shell). Once sourced, you can use the arrays like this:
 
 ```
 # Initialize array
@@ -22,6 +22,7 @@ multid [0][0]
 ```
 
 ## Issues
+Due to the fact that these arrays are not native, I could not find any way to make the syntaxis like that of the normal arrays. Suggestions are welcome.
 
 ## Planned features
    * Currently, due to compatibility concerns, the arrays can only be indexed. Associative arrays are planned for a future version.
